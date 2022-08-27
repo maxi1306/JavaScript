@@ -1,0 +1,60 @@
+.navbar-brand img{
+    width: 200px;
+}
+
+.container img{
+    width: 100%;
+    padding: 30px 10px 30px 10px;    
+}
+
+.col{
+    padding-top: 100px;
+    
+}
+.nav-item{
+    font-size: 20px;
+}
+
+
+.row{
+    --bs-gutter-x: 0rem;
+}
+
+.container{
+    --bs-gutter-x: 0rem;
+}
+
+
+/* MODELOS */
+.py-5{
+    padding-top: 8rem!important;
+    padding-bottom: 8rem!important;
+}
+
+/* TIENDAS */
+
+
+/* COMPANIA */
+
+.img-fluid{
+    max-width: 100%
+
+}
+
+.card {
+    border-radius: 0px;
+    align-items: center
+    
+}
+
+.card-img-overlay{
+    background-color: #00000086;
+}
+
+/* CONTACTO */
+
+.card div{
+    padding-top: 50px;
+}
+
+
