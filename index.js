@@ -33,14 +33,14 @@ const queModelo = [NAKED, TOURING, LEONCINO];
 
 do {
 
-    valorm = Number(prompt("Que Modelos vas a llevar? \n 1. NAKED \n 2. TOURING \n 3. LEONCINO"))
+    valorm = Number(prompt("Que Modelos vas a llevar? 🏍 \n 1. NAKED \n 2. TOURING \n 3. LEONCINO"))
     if (valorm === 1) {
         console.table(queModelo[0])
     } else if (valorm === 2) {
         console.table(queModelo[1])
     } else if (valorm === 3) {
         console.table(queModelo[2])
-    } else alert("elejiste una opcion invalida")
+    } else alert("Elejiste una opcion invalida")
 
 } while (valorm < 1 || valorm > 3)
 
@@ -73,7 +73,7 @@ function opcionesModelos() {
                 return 0
 
             default:
-                console.log("seleccione una opcion");
+                console.log("Seleccione una Opcion");
                 break
         }
     } while (valor !== 0 || valor === null)
