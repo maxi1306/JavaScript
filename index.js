@@ -1,25 +1,48 @@
-const NAKED = 3750000;
-const TOURING = 3250000;
-const LEONCINO = 1250000;
 const INTERESDOCE = 0.30;
 const INTERESSEIS = 0.15;
+
+const NAKED = {
+    modelo: 'TNT 600i',
+    precio: 3750000,
+    marca: 'Benelli',
+    cilindrada: '600cc',
+    año: 2022,
+    kilometros: '0km'
+}
+
+const TOURING = {
+    modelo: 'TRK 502 X',
+    precio: 3395000,
+    marca: 'Benelli',
+    cilindrada: '500cc',
+    año: 2022,
+    kilometros: '0km'
+}
+
+const LEONCINO = {
+    modelo: 'LEONCINO 250 ABS',
+    precio: 1250000,
+    marca: 'Benelli',
+    cilindrada: '250cc',
+    año: 2022,
+    kilometros: '0km'
+}
+
+const queModelo = [NAKED, TOURING, LEONCINO];
 
 
 do {
 
-    valor = Number(prompt("Que Modelos vas a llevar? \n 1. NAKED \n 2. TOURING \n 3. LEONCINO"))
-    if (valor === 1) {
-        queModelo = NAKED
-        console.log(queModelo)
-    } else if (valor === 2) {
-        queModelo = TOURING
-        console.log(queModelo)
-    } else if (valor === 3) {
-        queModelo = LEONCINO
-        console.log(queModelo)
+    valorm = Number(prompt("Que Modelos vas a llevar? \n 1. NAKED \n 2. TOURING \n 3. LEONCINO"))
+    if (valorm === 1) {
+        console.table(queModelo[0])
+    } else if (valorm === 2) {
+        console.table(queModelo[1])
+    } else if (valorm === 3) {
+        console.table(queModelo[2])
     } else alert("elejiste una opcion invalida")
 
-} while (valor < 1 || valor > 3)
+} while (valorm < 1 || valorm > 3)
 
 function calculoCuotas(modelo, cuotas, interes = 0) {
     console.log('Precio total:' + modelo + '\n cantidad de cuotas: ' + cuotas + (interes == 0 ? '\n No posee Interes' : '\n Precio total con Interes: ' + (modelo + modelo * interes)))
@@ -33,19 +56,20 @@ function opcionesModelos() {
 
         switch (valor) {
             case 1:
-                calculoCuotas(queModelo, 12, INTERESDOCE);
+
+                calculoCuotas(queModelo[1].precio, 12, INTERESDOCE);
                 return
 
             case 2:
-                calculoCuotas(queModelo, 6, INTERESSEIS);
+                calculoCuotas(queModelo[1].precio, 6, INTERESSEIS);
                 return
 
             case 3:
-                calculoCuotas(queModelo, 1);
+                calculoCuotas(queModelo[1].precio, 1);
                 return
 
             case 4:
-                console.log("Gracias por Elejirnos.");
+                alert("Gracias por Elejirnos! ❤");
                 return 0
 
             default:
