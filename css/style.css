@@ -9,7 +9,11 @@
 
 .col{
     padding-top: 100px;
-    
+
+}
+
+.col:hover{
+    transform: scale(1.01)
 }
 .nav-item{
     font-size: 20px;
@@ -37,13 +41,13 @@
 /* COMPANIA */
 
 .img-fluid{
-    max-width: 100%
+    max-width: 90%
 
 }
 
 .card {
-    border-radius: 0px;
-    align-items: center
+    border-radius: 16px;
+    border: 2px solid rgba(175, 174, 174, 0.182);
     
 }
 
