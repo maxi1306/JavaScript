@@ -133,8 +133,8 @@ function visualizarConsultas(){
 do {
     opcionesMoto();
     opcionesCuotas();  
-    fin = confirm("¿Desea ver otro modelo? \n aceptar para terminar, cancelar para sumar otro modelo");
-} while (fin != true)
+    fin = confirm("¿Desea ver otro modelo? \n 'aceptar' para seguir viendo, 'cancelar' para finalizar");
+} while (fin != false)
 
 let seleccion = 0;
 do {
