@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0; }
+  
+
 .navbar-brand img{
     width: 200px;
 }
@@ -62,3 +67,32 @@
 }
 
 
+/* JAVASCRIPT */
+.cont {
+    background-color: rgb(82, 89, 93);
+    display: flex;
+    justify-content: center
+}
+.precioMotos {
+    text-align: center;
+    height: 200px;
+    margin: 50px;
+    color: white;
+}
+
+.botonConsulta{
+    text-align: center;
+    background-color: #212529;
+    padding-top: 100px;
+}
+
+.botonConsulta button{
+    padding: 30px;
+    border-radius: 100px;
+}
+
+.botonConsulta button:hover{
+    background-color: aqua;
+    transform: scale(1.10)
+    
+}

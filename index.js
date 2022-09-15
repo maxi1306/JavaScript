@@ -57,10 +57,18 @@ const LEONCINO = {
 
 const queModelo = [];
 
+let boton = document.getElementById ("btnPrincipal")
+boton.addEventListener("click", respuestaClick)
+
+function respuestaClick(){
+    opcionesMoto()
+    opcionesCuotas()
+}
+
 
 function opcionesMoto(consulta = true){
     do {
-        valorm = Number(prompt("Que Modelos vas a llevar? 🏍 \n 1. TNT \n 2. TRK \n 3. IMPERIALE \n 4. NAKED \n 5. TRKX \n 6. LEONCINO \n 7. SALIR"))
+        valorm = Number(prompt("Que Modelo te interesa? 🏍 \n 1. TNT \n 2. TRK \n 3. IMPERIALE \n 4. NAKED \n 5. TRKX \n 6. LEONCINO \n 7. SALIR"))
         if (valorm === 1) {
             //console.table(TNT)
             mod = TNT;
@@ -92,7 +100,7 @@ function opcionesMoto(consulta = true){
 }
 
 function calculoCuotas(modelo, cuotas, interes = 0) {
-    return 'Precio total:' + modelo + '\n Cantidad de cuotas: ' + cuotas + (interes == 0 ? '\n No posee Interes' : '\n Precio total con Interes: ' + (modelo + modelo * interes));
+    return 'Precio total: ' + modelo + '\n Cantidad de cuotas: ' + cuotas + (interes == 0 ? '\n No posee Interes' : '\n Precio total con Interes: ' + (modelo + modelo * interes));
 }
 
 function opcionesCuotas() {
@@ -138,22 +146,22 @@ function opcionesCuotas() {
 function visualizarConsultas(){
     const contenedor = document.querySelector("#contenedor")
     queModelo.forEach(x => {
-        const moto = document.createElement ("div");
-        moto.innerHTML = `
-        <h2>${x.mod}</h2>
+        const precioMotos = document.createElement ("div");
+        precioMotos.innerHTML = `
+        <h1>${x.moto.modelo}</h1>
+        <br>
         <h3>${x.calculo}</h3>
-        <p>GRACIAS POR SU CONSULTA \n</p>
+        <br>
         `
-        contenedor.append(moto)
-        // console.table(x.moto)
-        // console.log(" \n " + x.calculo + " \n ")
+        contenedor.append(precioMotos)
+        precioMotos.className = "precioMotos"
     });
 }
 
-opcionesMoto();
-opcionesCuotas();
+// opcionesMoto();
+// opcionesCuotas();
 
-let seleccion = 0;
+// let seleccion = 0;
 
 
 // do {
