@@ -75,7 +75,7 @@
 }
 .precioMotos {
     text-align: center;
-    height: 200px;
+    height: auto;
     margin: 50px;
     color: white;
 }

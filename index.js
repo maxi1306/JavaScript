@@ -57,16 +57,15 @@ const LEONCINO = {
 
 const queModelo = [];
 
-let boton = document.getElementById ("btnPrincipal")
+let boton = document.getElementById("btnPrincipal")
 boton.addEventListener("click", respuestaClick)
 
-function respuestaClick(){
+function respuestaClick() {
     opcionesMoto()
     opcionesCuotas()
 }
 
-
-function opcionesMoto(consulta = true){
+function opcionesMoto(consulta = true) {
     do {
         valorm = Number(prompt("Que Modelo te interesa? 🏍 \n 1. TNT \n 2. TRK \n 3. IMPERIALE \n 4. NAKED \n 5. TRKX \n 6. LEONCINO \n 7. SALIR"))
         if (valorm === 1) {
@@ -91,12 +90,13 @@ function opcionesMoto(consulta = true){
             alert("Gracias por Elejirnos! ❤");
             break
         } else alert("Elejiste una opcion invalida ❌")
-        if(consulta){
-            queModelo.push({moto: mod,
+        if (consulta) {
+            queModelo.push({
+                moto: mod,
                 calculo: ""
             });
         }
-    } while (valorm < 1 || valorm > 6)  
+    } while (valorm < 1 || valorm > 6)
 }
 
 function calculoCuotas(modelo, cuotas, interes = 0) {
@@ -110,20 +110,20 @@ function opcionesCuotas() {
 
         switch (valor) {
             case 1:
-                queModelo[queModelo.length-1].calculo = calculoCuotas(queModelo[queModelo.length-1].moto.precio, 12, INTERESDOCE);
-                console.log(calculoCuotas(queModelo[queModelo.length-1].moto.precio, 12, INTERESDOCE));
+                queModelo[queModelo.length - 1].calculo = calculoCuotas(queModelo[queModelo.length - 1].moto.precio, 12, INTERESDOCE);
+
                 visualizarConsultas()
                 return
 
             case 2:
-                queModelo[queModelo.length-1].calculo = calculoCuotas(queModelo[queModelo.length-1].moto.precio, 6, INTERESSEIS);
-                console.log(calculoCuotas(queModelo[queModelo.length-1].moto.precio, 6, INTERESSEIS));
+                queModelo[queModelo.length - 1].calculo = calculoCuotas(queModelo[queModelo.length - 1].moto.precio, 6, INTERESSEIS);
+
                 visualizarConsultas()
                 return
 
             case 3:
-                queModelo[queModelo.length-1].calculo = calculoCuotas(queModelo[queModelo.length-1].moto.precio, 1);
-                console.log(calculoCuotas(queModelo[queModelo.length-1].moto.precio, 1));
+                queModelo[queModelo.length - 1].calculo = calculoCuotas(queModelo[queModelo.length - 1].moto.precio, 1);
+
                 visualizarConsultas()
 
                 return
@@ -143,10 +143,11 @@ function opcionesCuotas() {
     } while (valor !== 0 || valor === null)
 }
 
-function visualizarConsultas(){
+function visualizarConsultas() {
     const contenedor = document.querySelector("#contenedor")
+    contenedor.innerHTML = ""
     queModelo.forEach(x => {
-        const precioMotos = document.createElement ("div");
+        const precioMotos = document.createElement("div");
         precioMotos.innerHTML = `
         <h1>${x.moto.modelo}</h1>
         <br>
@@ -157,55 +158,3 @@ function visualizarConsultas(){
         precioMotos.className = "precioMotos"
     });
 }
-
-// opcionesMoto();
-// opcionesCuotas();
-
-// let seleccion = 0;
-
-
-// do {
-//     opcionesMoto();
-//     opcionesCuotas();  
-//     fin = confirm("¿Desea ver otro modelo? \n 'aceptar' para seguir viendo, 'cancelar' para finalizar");
-// } while (fin != false)
-
-// do {
-//     seleccion = Number(prompt("Seleccione una accion a realizar: \n 1. Historial de busquedas \n 2. Eliminar una consulta \n 3. Consultar historial por rango de precios \n 4. Buscar por moto \n 5. Salir"))
-//     switch (seleccion) {
-//         case 1:
-//             console.clear();
-//             visualizarConsultas();
-//             break;
-//         case 2:
-//             console.clear();
-//             let eliminar = Number(prompt("Ingrese el numero de consulta a eliminar:")) 
-//             queModelo.splice(eliminar-1, 1);
-//             break;
-//         case 3:
-//             console.clear();
-//             let precioMin = Number(prompt("Ingrese el precio minimo:"))
-//             let precioMax = Number(prompt("Ingrese el precio maximo:"))
-//             let consulta = queModelo.filter(x => x.moto.precio >= precioMin && x.moto.precio <= precioMax)
-//             consulta.forEach(x => {
-//                 console.table(x.moto)
-//                 console.log(" \n " + x.calculo + " \n ")
-//             });
-//             break;
-//         case 4:
-//             console.clear();
-//             opcionesMoto(false);
-//             let consulta2 = queModelo.filter(x => x.moto == mod)
-//             consulta2.forEach(x => {
-//                 console.table(x.moto)
-//                 console.log(" \n " + x.calculo + " \n ")
-//             });
-//             break;
-//         case 5:
-//             alert("Gracias por Elejirnos! ❤");
-//             break;
-//         default:
-//             alert("Seleccione una Opcion");
-//             break;
-//     }
-// } while (seleccion !== 5)
