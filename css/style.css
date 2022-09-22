@@ -33,66 +33,50 @@
     --bs-gutter-x: 0rem;
 }
 
+/* JAVASCRIPT */
 
-/* MODELOS */
-.py-5{
-    padding-top: 8rem!important;
-    padding-bottom: 8rem!important;
+
+.cont {
+    background-color: rgb(57, 62, 65);
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-/* TIENDAS */
-
-
-/* COMPANIA */
-
-.img-fluid{
-    max-width: 90%
-
+.cont img{
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-
-.card {
-    border-radius: 16px;
-    border: 2px solid rgba(175, 174, 174, 0.182);
+.precioMotos {
+    background-color: rgb(57, 62, 65);
+    text-align: center;
+    height: auto;
+    padding: 30px;
+    color: white;
     
 }
 
-.card-img-overlay{
-    background-color: #00000086;
-}
-
-/* CONTACTO */
-
-.card div{
-    padding-top: 45px;
-}
-
-
-/* JAVASCRIPT */
-.cont {
-    background-color: rgb(82, 89, 93);
-    display: flex;
-    justify-content: center
-}
-.precioMotos {
+.contVaciar{
+    background-color: rgb(57, 62, 65);
     text-align: center;
-    height: auto;
-    margin: 50px;
+    padding-top: 10px;
+}
+
+.btnVaciar{
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: grey;
     color: white;
 }
 
-.botonConsulta{
-    text-align: center;
-    background-color: #212529;
-    padding-top: 100px;
-}
-
-.botonConsulta button{
-    padding: 30px;
-    border-radius: 100px;
-}
-
-.botonConsulta button:hover{
-    background-color: aqua;
-    transform: scale(1.10)
+.btnVaciar:hover{
+    background-color: white;
+    color: black;
+    transform: scale(1.06)
     
 }
