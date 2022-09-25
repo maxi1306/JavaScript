@@ -32,7 +32,7 @@ stockMotos.forEach(moto => {
             <div class="card-body text-white">
               <h5 class="card-title fs-1">${moto.modelo}</h5>
               <p class="card-text">
-                Marca: <b>$${moto.marca}</b> <br />
+                Marca: <b>${moto.marca}</b> <br />
                 Kilometros: ${moto.kilometros}<br />
                 Cilindrada: ${moto.cilindrada}</p>
         </div>
