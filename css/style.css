@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0; }
   
+    
 
 .navbar-brand img{
     width: 200px;
@@ -35,7 +36,25 @@
 
 /* JAVASCRIPT */
 
+.btnReserva{
+    background-color: rgb(84, 49, 116);
+    color: white;
+}
 
+.btnReserva:hover{
+    background-color: black;
+    color: white;
+}
+
+.btnConsulta{
+    background-color: rgb(73, 86, 120);
+    color: white;
+}
+
+.btnConsulta:hover{
+    background-color: black;
+    color: white;
+}
 .cont {
     background-color: rgb(57, 62, 65);
     display: flex;
@@ -51,12 +70,18 @@
     justify-content: space-around;
 }
 .precioMotos {
-    background-color: rgb(57, 62, 65);
+    background: radial-gradient(90% 50% at 50% 50%, #6f7673 0%, #3c3d3d 100%);
     text-align: center;
     height: auto;
     padding: 30px;
     color: white;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.precioMotos p{
+    font-size:xx-large;
 }
 
 .contVaciar{

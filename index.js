@@ -1,3 +1,4 @@
+const INTERESVEINTICUATRO = 0.45;
 const INTERESDOCE = 0.30;
 const INTERESSEIS = 0.15;
 
@@ -9,17 +10,17 @@ const stockMotos = [
     { id: 4, modelo: '302S', precio: 1664000, marca: 'Benelli', cilindrada: '300cc', imagen: "https://storage.bbike-cdn.com.cn/benelli.com/media/1422/conversions/0c14b55d609578a2cd4497bf99be42c7-hd.png", kilometros: '0km' },
     { id: 5, modelo: 'TRK 502X', precio: 3395000, marca: 'Benelli', cilindrada: '500cc', imagen: "https://storage.bbike-cdn.com.cn/benelli.com/media/1111/conversions/95e20cff7c5d284f2b63178ea91583f2-hd.png", kilometros: '0km' },
     { id: 6, modelo: 'LEONCINO 250 ABS', precio: 1250000, marca: 'Benelli', cilindrada: '250cc', imagen: "https://storage.bbike-cdn.com.cn/benelli.com/media/1967/conversions/4a7e86ca38cccfda57cd25eb8f690959-hd.png", kilometros: '0km' },
-    
+
 ];
 
 let queModelo = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("modeloMoto")) {
-      queModelo = JSON.parse(localStorage.getItem("modeloMoto"))
-      visualizarConsultas()
+        queModelo = JSON.parse(localStorage.getItem("modeloMoto"))
+        visualizarConsultas()
     }
-  })
+})
 
 stockMotos.forEach(moto => {
     const divMoto = document.createElement("div");
@@ -38,21 +39,62 @@ stockMotos.forEach(moto => {
         </div>
         <div class="card-footer">
             <small class="text-muted">
-                <button href="#" id="consultar${moto.id}" class="btn btn-primary">Consultar</button>
+                <button href="#" id="consultar${moto.id}" class="btn btnConsulta">Consultar</button>
             </small>
+            <small class="text-muted">
+                <button href="#" id="btnReserv" class="btn btnReserva">Reservar</button>
+            </small>
+
         </div>
     </div>
     `
 
     contenedorMotos.appendChild(divMoto);
 
-    
+        // const cuota = document.querySelector('#selectorCuotas'); () => {
+       
+        //     let c;
+       
+        //     if (cuota == 'select_seisCuotas') {
+        //            c = moto.precio * INTERESSEIS;
+        //     } else if (cuota == 'select_doceCuotas') {
+        //            c = moto.precio * INTERESDOCE;
+        //     } else if (cuota == 'select_veinticuatroCuotas') {
+        //            c = moto.precio * INTERESVEINTICUATRO;
+        //     }
+        //     console.log(c);}
+               
+    // function selectCuotas() {
+    //     const seisCuotas = document.getElementById("select_seisCuotas");
+    //     const doceCuotas = document.getElementById("select_doceCuotas");
+    //     const veinticuatroCuotas = document.getElementById("select_veinticuatrocuotas");
+
+    //    seisCuotas = moto.precio * INTERESSEIS;
+    //    doceCuotas = moto.precio * INTERESDOCE;
+    //    veinticuatroCuotas = moto.precio * INTERESVEINTICUATRO;
+
+
+    // }
+
     const button = document.getElementById(`consultar${moto.id}`)
     button.addEventListener("click", () => {
+
+        Toastify({
+            text: "Has hecho una consulta",
+            duration: 3000,
+            position: "left",
+            gravity: "bottom",
+            style: {
+                background: "linear-gradient(to right, #000000, #320299, #000000)",  
+            },
+
+        }).showToast(); 
+
         respuestaClick(moto.id)
     })
 
 })
+
 
 function respuestaClick(motoId) {
     const motoSelecionada = stockMotos.find((moto) => moto.id === motoId)
@@ -60,15 +102,6 @@ function respuestaClick(motoId) {
 
     visualizarConsultas()
 }
-
-
-
-const vaciar = document.getElementById("vaciar")
-vaciar.addEventListener("click", () => {
-    queModelo.length = 0
-    visualizarConsultas()
-    localStorage.removeItem("modeloMoto")
-})
 
 function calculoCuotas(modelo, cuotas, interes = 0) {
     return 'Precio total: ' + modelo + '\n Cantidad de cuotas: ' + cuotas + (interes == 0 ? '\n No posee Interes' : '\n Precio total con Interes: ' + (modelo + modelo * interes));
@@ -82,26 +115,25 @@ function opcionesCuotas(precio, cuotas, interes) {
 }
 
 function visualizarConsultas() {
-    const contenedor = document.querySelector("#contenedor")
+    const contenedor = document.querySelector("#contenedorConsulta")
     contenedor.innerHTML = ""
     queModelo.forEach(x => {
         const precioMotos = document.createElement("div");
         precioMotos.innerHTML = `
-        <h1>${x.modelo}</h1>
+        <h1>${x.modelo}:</h1>
         <br>
-        <h2>Precio Total: ${x.precio}</h2>
+        <h2>Precio Total: <br> $${x.precio}</h2>
         <br>
-        <h3>12 Cuotas C/interes de ${x.precio * INTERESDOCE} </h3>
+        <p>24 Cuotas C/interes de <br> $${x.precio * INTERESVEINTICUATRO} </p>
         <br>
-        <h4>6 Cuotas C/interes de ${x.precio * INTERESSEIS}</h4>
+        <p>12 Cuotas C/interes de <br> $${x.precio * INTERESDOCE} </p>
+        <br>
+        <p>6 Cuotas C/interes de <br> $${x.precio * INTERESSEIS}</p>
+
         `
         contenedor.append(precioMotos)
-        
+
         precioMotos.className = "precioMotos"
-       localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
+        localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
     });
 }
-
-
-
-
