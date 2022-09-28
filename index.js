@@ -42,39 +42,13 @@ stockMotos.forEach(moto => {
                 <button href="#" id="consultar${moto.id}" class="btn btnConsulta">Consultar</button>
             </small>
             <small class="text-muted">
-                <button href="#" id="btnReserv" class="btn btnReserva">Reservar</button>
+                <button href="#" id="reserva${moto.id}" class="btn btnReserva">Reservar</button>
             </small>
 
         </div>
     </div>
     `
-
     contenedorMotos.appendChild(divMoto);
-
-        // const cuota = document.querySelector('#selectorCuotas'); () => {
-       
-        //     let c;
-       
-        //     if (cuota == 'select_seisCuotas') {
-        //            c = moto.precio * INTERESSEIS;
-        //     } else if (cuota == 'select_doceCuotas') {
-        //            c = moto.precio * INTERESDOCE;
-        //     } else if (cuota == 'select_veinticuatroCuotas') {
-        //            c = moto.precio * INTERESVEINTICUATRO;
-        //     }
-        //     console.log(c);}
-               
-    // function selectCuotas() {
-    //     const seisCuotas = document.getElementById("select_seisCuotas");
-    //     const doceCuotas = document.getElementById("select_doceCuotas");
-    //     const veinticuatroCuotas = document.getElementById("select_veinticuatrocuotas");
-
-    //    seisCuotas = moto.precio * INTERESSEIS;
-    //    doceCuotas = moto.precio * INTERESDOCE;
-    //    veinticuatroCuotas = moto.precio * INTERESVEINTICUATRO;
-
-
-    // }
 
     const button = document.getElementById(`consultar${moto.id}`)
     button.addEventListener("click", () => {
@@ -85,16 +59,82 @@ stockMotos.forEach(moto => {
             position: "left",
             gravity: "bottom",
             style: {
-                background: "linear-gradient(to right, #000000, #320299, #000000)",  
+                background: "linear-gradient(to right, #000000, #320299, #000000)",
             },
 
-        }).showToast(); 
+        }).showToast();
 
         respuestaClick(moto.id)
     })
 
+    const buttonReserva = document.getElementById(`reserva${moto.id}`)
+    buttonReserva.addEventListener("click", () => {
+
+        Toastify({
+            text: "Has hecho una reserva",
+            duration: 3000,
+            position: "left",
+            gravity: "bottom",
+            style: {
+                background: "linear-gradient(to right, #000000, #320299, #000000)",
+            },
+
+        }).showToast();
+
+        respuestaClickResv(moto.id)
+    })
+
 })
 
+function formularioReserva() {
+    const contenedorReserva = document.querySelector("#formReserva")
+    contenedorReserva.innerHTML = ""
+    queModelo.forEach(x => {
+        const divReserva = document.createElement("div");
+        divReserva.innerHTML = `
+        <h3>INGRESE SUS DATOS PARA SU RESERVA</h3>
+        <br>
+        <h2>Modelo Elejido: <br> $${x.modelo}</h2>
+        <br>
+        <div class="inputForm">
+                    <input type="text" placeholder="Nombre" name="nombre">
+                    <input type="text" placeholder="Apellido" name="apellido">
+                    <input type="text" name="dni" placeholder="Introduzca su DNI"/>
+                    <input type="email" placeholder="Correo Electronico">
+                </div>
+                <br>
+                <p>Eljita la Cantidad de Cuotas:</p>
+                <br>
+                <select name="Cuotas a Elejir">
+                        <option value="84">84 Cuotas</option>
+                        <option value="64">64 Cuotas</option>
+                        <option value="48">48 Cuotas</option>
+                        <option value="36">36 Cuotas</option>
+                        <option value="24">24 Cuotas</option>
+                        <option value="12">12 Cuotas</option>
+                        <option value="6">6 Cuotas</option>
+                        <option value="1">1 Cuotas</option>
+                        <option value="contado">Al Contado</option>
+                    </select>
+        <br>
+        <small >
+        <input type="submit" value="Reservar">
+            </small>
+
+        `
+        contenedorReserva.append(divReserva)
+        divReserva.className = "divReserv"
+
+        localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
+    });
+}
+
+function respuestaClickResv(motoId) {
+    const motoSelecionada = stockMotos.find((moto) => moto.id === motoId)
+    queModelo.push(motoSelecionada)
+
+    formularioReserva()
+}
 
 function respuestaClick(motoId) {
     const motoSelecionada = stockMotos.find((moto) => moto.id === motoId)

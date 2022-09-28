@@ -105,3 +105,14 @@
     transform: scale(1.06)
     
 }
+
+.divReserv {
+    background: radial-gradient(90% 50% at 50% 50%, #6f7673 0%, #3c3d3d 100%);
+    text-align: center;
+    height: auto;
+    padding: 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

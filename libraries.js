@@ -18,18 +18,6 @@ vaciar.addEventListener("click", () => {
       })
     queModelo.length = 0
     visualizarConsultas()
+    formularioReserva()
     localStorage.removeItem("modeloMoto")
 })
-
-// const DataTime = luxon.DateTime;
-// const fechaReserva = DataTime.now().toString();
-// const btnReserva = document.querySelector('#btnReserv')
-
-// btnReserva.addEventListener('click', () => {
-
-//     Swal.fire({
-//       icon: 'info',
-//       title: "has hecho una reserva",
-//       text: `tu reserva se a hecho a las: ${DataTime.now().toString()}`
-//     })
-// })
