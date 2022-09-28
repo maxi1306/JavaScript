@@ -14,7 +14,7 @@ vaciar.addEventListener("click", () => {
       
       Toast.fire({
         icon: 'success',
-        title: 'Has vaciado las Consultas'
+        title: 'Has vaciado las Consultas y/o Reserva'
       })
     queModelo.length = 0
     visualizarConsultas()

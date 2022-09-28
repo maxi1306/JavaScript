@@ -73,7 +73,7 @@ stockMotos.forEach(moto => {
         Toastify({
             text: "Has hecho una reserva",
             duration: 3000,
-            position: "left",
+            position: "right",
             gravity: "bottom",
             style: {
                 background: "linear-gradient(to right, #000000, #320299, #000000)",
