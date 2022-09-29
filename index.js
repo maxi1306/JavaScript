@@ -70,41 +70,31 @@ stockMotos.forEach(moto => {
     const buttonReserva = document.getElementById(`reserva${moto.id}`)
     buttonReserva.addEventListener("click", () => {
 
-        Toastify({
-            text: "Has hecho una reserva",
-            duration: 3000,
-            position: "right",
-            gravity: "bottom",
-            style: {
-                background: "linear-gradient(to right, #000000, #320299, #000000)",
-            },
-
-        }).showToast();
-
         respuestaClickResv(moto.id)
     })
 
 })
+let arrayformReserva = [];
 
 function formularioReserva() {
     const contenedorReserva = document.querySelector("#formReserva")
     contenedorReserva.innerHTML = ""
-    queModelo.forEach(x => {
+    arrayformReserva.forEach(x => {
         const divReserva = document.createElement("div");
         divReserva.innerHTML = `
         <h3>INGRESE SUS DATOS PARA SU RESERVA</h3>
         <br>
         <h2>Modelo Elejido: <br> $${x.modelo}</h2>
         <br>
-        <div class="inputForm">
-                    <input type="text" placeholder="Nombre" name="nombre">
-                    <input type="text" placeholder="Apellido" name="apellido">
-                    <input type="text" name="dni" placeholder="Introduzca su DNI"/>
-                    <input type="email" placeholder="Correo Electronico">
-                </div>
+        <form id="subReserva" class="inputForm">
+                    <input type="text" placeholder="Nombre" name="nombre" required>
+                    <input type="text" placeholder="Apellido" name="apellido" required>
+                    <input type="text" name="dni" placeholder="Introduzca su DNI"/ required>
+                    <input type="email" placeholder="Correo Electronico" required>
+                
                 <br>
                 <p>Eljita la Cantidad de Cuotas:</p>
-                <br>
+                
                 <select name="Cuotas a Elejir">
                         <option value="84">84 Cuotas</option>
                         <option value="64">64 Cuotas</option>
@@ -115,23 +105,47 @@ function formularioReserva() {
                         <option value="6">6 Cuotas</option>
                         <option value="1">1 Cuotas</option>
                         <option value="contado">Al Contado</option>
-                    </select>
-        <br>
-        <small >
-        <input type="submit" value="Reservar">
-            </small>
+                    </select
+                <br>
+                <input type="submit"  value="Reservar"></form>
 
         `
         contenedorReserva.append(divReserva)
         divReserva.className = "divReserv"
 
-        localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
+        const submitReserva = document.getElementById(`subReserva`)
+        submitReserva.addEventListener("submit", (e) => {
+            e.preventDefault();
+            submitReserva.reset();
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Felicidades! 🥳 Has hecho una Reserva'
+            })
+
+            respuestaClickResv(moto.id)
+            
+            localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
+        })
     });
 }
 
+
 function respuestaClickResv(motoId) {
     const motoSelecionada = stockMotos.find((moto) => moto.id === motoId)
-    queModelo.push(motoSelecionada)
+    arrayformReserva.push(motoSelecionada)
 
     formularioReserva()
 }
@@ -177,3 +191,13 @@ function visualizarConsultas() {
         localStorage.setItem("modeloMoto", JSON.stringify(queModelo))
     });
 }
+
+const vaciar = document.getElementById("vaciar")
+vaciar.addEventListener("click", () => {
+
+    queModelo.length = 0
+    arrayformReserva.length = 0
+    visualizarConsultas()
+    formularioReserva()
+    localStorage.removeItem("modeloMoto")
+})
