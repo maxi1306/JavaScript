@@ -69,7 +69,14 @@ fetch('/stockMotos.json')
 
         })
 
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem("modeloMoto")) {
+                queModelo = JSON.parse(localStorage.getItem("modeloMoto"))
 
+                visualizarConsultas()
+
+            }
+        });
 
         function formularioReserva() {
             const contenedorReserva = document.querySelector("#formReserva")
@@ -201,14 +208,7 @@ fetch('/stockMotos.json')
             localStorage.removeItem("modeloMoto")
         })
 
-        document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem("modeloMoto")) {
-                queModelo = JSON.parse(localStorage.getItem("modeloMoto"))
 
-                visualizarConsultas()
-
-            }
-        });
 
     });
 
